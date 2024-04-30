@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws Exception {
+        BFS bfs = new BFS();
         Map<String, Boolean> db = new HashMap<>();
         Scanner sc = new Scanner(new File("english.csv"));
         sc.useDelimiter(",");
@@ -28,11 +29,13 @@ public class Main {
             }
 
             if (temp.length() > 0 && !db.containsKey(temp)) {
-                db.put(temp, true);
+                db.put(temp.toLowerCase(), true);
             }
         }
         sc.close();
 
-        System.out.println(db.get("Abandon"));
+        // int tes = bfs.ladderLength("vast", "vest", db);
+        int tes = bfs.ladderLength("east", "west", db);
+        System.out.println(tes);
     }
 }
