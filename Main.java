@@ -18,22 +18,25 @@ public class Main {
         }
         sc.close();
 
+        long startTime = System.currentTimeMillis();
+
         // List<String> tes = bfs.algo("charge", "comedo", db);
         // System.out.println("hasil\n");
-        // tes.forEach(item -> System.out.println(item));
 
-        // List<String> tes = gbfs.algo("charge", "comedo", db);
-        // System.out.println("hasil\n");
-        // tes.forEach(item2 -> System.out.println(item2));
+        List<String> tes = gbfs.algo("charge", "comedo", db);
+        System.out.println("hasil\n");
 
         // List<String> tes = ucs.algo("charge", "comedo", db);
         // System.out.println("hasil\n");
-        // tes.forEach(item2 -> System.out.println(item2));
 
-        List<String> tes = AStar.algo("charge", "comedo", db);
-        System.out.println("hasil\n");
-        tes.forEach(item2 -> System.out.println(item2));
+        // List<String> tes = AStar.algo("charge", "comedo", db);
+        // System.out.println("hasil\n");
 
-        System.out.println(tes.size());
+        long endTime = System.currentTimeMillis();
+        long totalTime = endTime - startTime;
+
+        tes.forEach(item -> System.out.println(item));
+        System.out.println("panjang path " + tes.size());
+        System.out.println("Total waktu yang dibutuhkan: " + totalTime + " milidetik");
     }
 }
