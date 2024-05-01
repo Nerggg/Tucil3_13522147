@@ -1,5 +1,4 @@
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import java.io.*;
 import java.util.Scanner;
 
@@ -16,9 +15,8 @@ public class Main {
         }
         sc.close();
 
-        int tes = bfs.ladderLength("vast", "vest", db);
-        int tes = bfs.ladderLength("east", "west", db);
-        int tes = bfs.ladderLength("rime", "rice", db);
-        System.out.println(tes);
+        List<String> tes = bfs.algo("charge", "comedo", db);
+        System.out.println("hasil\n");
+        tes.forEach(item -> System.out.println(item));
     }
 }

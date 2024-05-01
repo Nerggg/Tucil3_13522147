@@ -1,43 +1,38 @@
 import java.util.*;
 
-public class BFS {
-    public int ladderLength(String beginWord, String endWord, Map<String, Boolean> wordList) {
-        Set<String> head = new HashSet<>();
-        Set<String> tail = new HashSet<>();
-        if (!wordList.get(endWord)) {
-            return 0;
-        }
-        head.add(beginWord);
-        tail.add(endWord);
-        int ladder = 2;
-        while (!head.isEmpty() && !tail.isEmpty()) {
-            if (head.size() < tail.size()) {
-                Set<String> temp = head;
-                head = tail;
-                tail = temp;
-            }
-            Set<String> nextLevel = new HashSet<>();
-            for (String word : head) {
-                char[] chars = word.toCharArray();
-                for (int i = 0; i < word.length(); i++) {
-                    char originalChar = chars[i];
+class BFS {
+    public List<String> algo(String beginWord, String endWord, Map<String, Boolean> wordList) {
+        Node beginNode = new Node(beginWord);
+        beginNode.path.add(beginWord);
+
+        Queue<Node> todo = new LinkedList<>();
+        todo.add(beginNode);
+        while (!todo.isEmpty()) {
+            int n = todo.size();
+            for (int i = 0; i < n; i++) {
+                Node current = todo.poll();
+                if (current.word.equals(endWord)) {
+                    return current.path;
+                }
+                wordList.remove(current.word);
+                char[] charArray = current.word.toCharArray();
+                for (int j = 0; j < charArray.length; j++) {
+                    char originalChar = charArray[j];
                     for (char c = 'a'; c <= 'z'; c++) {
-                        chars[i] = c;
-                        String newWord = new String(chars);
-                        if (tail.contains(newWord)) {
-                            return ladder;
-                        }
-                        if (wordList.get(newWord) != null) {
-                            nextLevel.add(newWord);
+                        charArray[j] = c;
+                        String newWord = new String(charArray);
+                        if (wordList.containsKey(newWord)) {
+                            List<String> tempPath = new ArrayList<>(current.path);
+                            tempPath.add(newWord);
+                            Node newNode = new Node(newWord, tempPath);
+                            todo.add(newNode);
                             wordList.remove(newWord);
                         }
                     }
-                    chars[i] = originalChar;
+                    charArray[j] = originalChar;
                 }
             }
-            ladder++;
-            head = nextLevel;
         }
-        return 0;
+        return new ArrayList<>();
     }
 }
