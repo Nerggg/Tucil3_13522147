@@ -1,19 +1,15 @@
 import java.util.*;
 
-class GBFS {
+class UCS {
     public List<String> algo(String beginWord, String endWord, Map<String, Boolean> wordList) {
-        Node beginNode = new Node(beginWord);
+        NodeUCS beginNode = new NodeUCS(beginWord, 0);
         beginNode.path.add(beginWord);
 
-        PriorityQueue<Node> todo = new PriorityQueue<>((a, b) -> {
-            int diffA = getHeuristic(a.word, endWord);
-            int diffB = getHeuristic(b.word, endWord);
-            return Integer.compare(diffA, diffB);
-        });
+        PriorityQueue<NodeUCS> todo = new PriorityQueue<>((a, b) -> Integer.compare(a.cost, b.cost));
         todo.add(beginNode);
 
         while (!todo.isEmpty()) {
-            Node current = todo.poll();
+            NodeUCS current = todo.poll();
             if (current.word.equals(endWord)) {
                 return current.path;
             }
@@ -27,7 +23,8 @@ class GBFS {
                     if (wordList.containsKey(newWord)) {
                         List<String> tempPath = new ArrayList<>(current.path);
                         tempPath.add(newWord);
-                        Node newNode = new Node(newWord, tempPath);
+                        int newCost = current.cost + 1; // Biaya untuk UCS adalah 1
+                        NodeUCS newNode = new NodeUCS(newWord, newCost, tempPath);
                         todo.add(newNode);
                         wordList.remove(newWord);
                     }
@@ -36,15 +33,5 @@ class GBFS {
             }
         }
         return new ArrayList<>();
-    }
-
-    private int getHeuristic(String word, String target) {
-        int diff = 0;
-        for (int i = 0; i < word.length(); i++) {
-            if (word.charAt(i) != target.charAt(i)) {
-                diff++;
-            }
-        }
-        return diff;
     }
 }

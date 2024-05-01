@@ -1,19 +1,16 @@
 import java.util.*;
 
-class GBFS {
+class AStar {
     public List<String> algo(String beginWord, String endWord, Map<String, Boolean> wordList) {
-        Node beginNode = new Node(beginWord);
+        NodeAStar beginNode = new NodeAStar(beginWord);
         beginNode.path.add(beginWord);
 
-        PriorityQueue<Node> todo = new PriorityQueue<>((a, b) -> {
-            int diffA = getHeuristic(a.word, endWord);
-            int diffB = getHeuristic(b.word, endWord);
-            return Integer.compare(diffA, diffB);
-        });
+        PriorityQueue<NodeAStar> todo = new PriorityQueue<>(
+                (a, b) -> Integer.compare(a.cost + a.heuristic, b.cost + b.heuristic));
         todo.add(beginNode);
 
         while (!todo.isEmpty()) {
-            Node current = todo.poll();
+            NodeAStar current = todo.poll();
             if (current.word.equals(endWord)) {
                 return current.path;
             }
@@ -27,7 +24,8 @@ class GBFS {
                     if (wordList.containsKey(newWord)) {
                         List<String> tempPath = new ArrayList<>(current.path);
                         tempPath.add(newWord);
-                        Node newNode = new Node(newWord, tempPath);
+                        int heuristic = getHeuristic(newWord, endWord);
+                        NodeAStar newNode = new NodeAStar(newWord, current.cost + 1, heuristic, tempPath);
                         todo.add(newNode);
                         wordList.remove(newWord);
                     }

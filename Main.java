@@ -6,6 +6,8 @@ public class Main {
     public static void main(String[] args) throws Exception {
         BFS bfs = new BFS();
         GBFS gbfs = new GBFS();
+        UCS ucs = new UCS();
+        AStar AStar = new AStar();
         Map<String, Boolean> db = new HashMap<>();
         Scanner sc = new Scanner(new File("words_alpha.txt"));
         while (sc.hasNext()) {
@@ -20,10 +22,18 @@ public class Main {
         // System.out.println("hasil\n");
         // tes.forEach(item -> System.out.println(item));
 
-        // System.out.println();
-
-        // List<String> tes2 = gbfs.algo("charge", "comedo", db);
+        // List<String> tes = gbfs.algo("charge", "comedo", db);
         // System.out.println("hasil\n");
-        // tes2.forEach(item2 -> System.out.println(item2));
+        // tes.forEach(item2 -> System.out.println(item2));
+
+        // List<String> tes = ucs.algo("charge", "comedo", db);
+        // System.out.println("hasil\n");
+        // tes.forEach(item2 -> System.out.println(item2));
+
+        List<String> tes = AStar.algo("charge", "comedo", db);
+        System.out.println("hasil\n");
+        tes.forEach(item2 -> System.out.println(item2));
+
+        System.out.println(tes.size());
     }
 }
