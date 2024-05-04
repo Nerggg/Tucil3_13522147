@@ -1,7 +1,7 @@
 import java.util.*;
 
 class BFS {
-    public List<String> algo(String beginWord, String endWord, Map<String, Boolean> wordList) {
+    static public List<String> algo(String beginWord, String endWord, Map<String, Boolean> wordList, long[] visited) {
         Node beginNode = new Node(beginWord);
         beginNode.path.add(beginWord);
 
@@ -19,6 +19,7 @@ class BFS {
                 for (int j = 0; j < charArray.length; j++) {
                     char originalChar = charArray[j];
                     for (char c = 'a'; c <= 'z'; c++) {
+                        visited[0]++;
                         charArray[j] = c;
                         String newWord = new String(charArray);
                         if (wordList.containsKey(newWord)) {

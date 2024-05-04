@@ -1,7 +1,7 @@
 import java.util.*;
 
 class UCS {
-    public List<String> algo(String beginWord, String endWord, Map<String, Boolean> wordList) {
+    static public List<String> algo(String beginWord, String endWord, Map<String, Boolean> wordList, long[] visited) {
         NodeUCS beginNode = new NodeUCS(beginWord, 0);
         beginNode.path.add(beginWord);
 
@@ -18,6 +18,7 @@ class UCS {
             for (int j = 0; j < charArray.length; j++) {
                 char originalChar = charArray[j];
                 for (char c = 'a'; c <= 'z'; c++) {
+                    visited[0]++;
                     charArray[j] = c;
                     String newWord = new String(charArray);
                     if (wordList.containsKey(newWord)) {

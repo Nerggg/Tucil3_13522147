@@ -1,7 +1,7 @@
 import java.util.*;
 
 class AStar {
-    public List<String> algo(String beginWord, String endWord, Map<String, Boolean> wordList) {
+    static public List<String> algo(String beginWord, String endWord, Map<String, Boolean> wordList, long[] visited) {
         NodeAStar beginNode = new NodeAStar(beginWord);
         beginNode.path.add(beginWord);
 
@@ -19,6 +19,7 @@ class AStar {
             for (int j = 0; j < charArray.length; j++) {
                 char originalChar = charArray[j];
                 for (char c = 'a'; c <= 'z'; c++) {
+                    visited[0]++;
                     charArray[j] = c;
                     String newWord = new String(charArray);
                     if (wordList.containsKey(newWord)) {
@@ -36,7 +37,7 @@ class AStar {
         return new ArrayList<>();
     }
 
-    private int getHeuristic(String word, String target) {
+    static private int getHeuristic(String word, String target) {
         int diff = 0;
         for (int i = 0; i < word.length(); i++) {
             if (word.charAt(i) != target.charAt(i)) {

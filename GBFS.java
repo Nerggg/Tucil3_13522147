@@ -1,7 +1,7 @@
 import java.util.*;
 
 class GBFS {
-    public List<String> algo(String beginWord, String endWord, Map<String, Boolean> wordList) {
+    static public List<String> algo(String beginWord, String endWord, Map<String, Boolean> wordList, long[] visited) {
         Node beginNode = new Node(beginWord);
         beginNode.path.add(beginWord);
 
@@ -22,6 +22,7 @@ class GBFS {
             for (int j = 0; j < charArray.length; j++) {
                 char originalChar = charArray[j];
                 for (char c = 'a'; c <= 'z'; c++) {
+                    visited[0]++;
                     charArray[j] = c;
                     String newWord = new String(charArray);
                     if (wordList.containsKey(newWord)) {
@@ -38,7 +39,7 @@ class GBFS {
         return new ArrayList<>();
     }
 
-    private int getHeuristic(String word, String target) {
+    static private int getHeuristic(String word, String target) {
         int diff = 0;
         for (int i = 0; i < word.length(); i++) {
             if (word.charAt(i) != target.charAt(i)) {
