@@ -20,7 +20,7 @@ public class Main {
         Scanner userAgain = new Scanner(System.in);
         String beginWord = "";
         String endWord = "";
-        int alg = 10;
+        int alg = 0;
         boolean begin = true;
 
         System.out.println("Welcome to Word Ladder Solver!\n");
