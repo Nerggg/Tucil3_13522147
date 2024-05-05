@@ -11,6 +11,7 @@ class BFS {
             int n = todo.size();
             for (int i = 0; i < n; i++) {
                 Node current = todo.poll();
+                visited[0]++;
                 if (current.word.equals(endWord)) {
                     return current.path;
                 }
@@ -19,7 +20,6 @@ class BFS {
                 for (int j = 0; j < charArray.length; j++) {
                     char originalChar = charArray[j];
                     for (char c = 'a'; c <= 'z'; c++) {
-                        visited[0]++;
                         charArray[j] = c;
                         String newWord = new String(charArray);
                         if (wordList.containsKey(newWord)) {

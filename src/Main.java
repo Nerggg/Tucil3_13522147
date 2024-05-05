@@ -1,6 +1,5 @@
 import java.util.*;
 import java.io.*;
-import java.util.Scanner;
 
 public class Main {
     public static void resetDB(Map<String, Boolean> db) throws Exception {
@@ -68,62 +67,34 @@ public class Main {
                 }
             }
 
-            long startTime, endTime, totalTime;
+            long startTime = 0, endTime = 0, totalTime = 0;
             long[] visited = { 0 };
-            List<String> path;
+            List<String> path = new ArrayList<>();
             if (alg == 1) {
                 startTime = System.currentTimeMillis();
                 path = GBFS.algo(beginWord, endWord, db, visited);
                 endTime = System.currentTimeMillis();
                 System.out.println("\nGBFS Result:");
-                System.out.print(path.get(0));
-                for (int i = 1; i < path.size(); i++) {
-                    System.out.print(" -> " + path.get(i));
-                }
-                System.out.println();
-                System.out.println();
-                totalTime = endTime - startTime;
-                System.out.println("Node Visited: " + visited[0]);
-                System.out.println("Path Length: " + path.size());
-                System.out.println("Time Taken: " + totalTime + " ms");
-                System.out.println();
             } else if (alg == 2) {
                 startTime = System.currentTimeMillis();
                 path = AStar.algo(beginWord, endWord, db, visited);
                 endTime = System.currentTimeMillis();
                 System.out.println("\nAstar Result:");
-                System.out.print(path.get(0));
-                for (int i = 1; i < path.size(); i++) {
-                    System.out.print(" -> " + path.get(i));
-                }
-                System.out.println();
-                System.out.println();
-                totalTime = endTime - startTime;
-                System.out.println("Node Visited: " + visited[0]);
-                System.out.println("Path Length: " + path.size());
-                System.out.println("Time Taken: " + totalTime + " ms");
-                System.out.println();
             } else if (alg == 3) {
                 startTime = System.currentTimeMillis();
                 path = UCS.algo(beginWord, endWord, db, visited);
                 endTime = System.currentTimeMillis();
                 System.out.println("\nUCS Result:");
-                System.out.print(path.get(0));
-                for (int i = 1; i < path.size(); i++) {
-                    System.out.print(" -> " + path.get(i));
-                }
-                System.out.println();
-                System.out.println();
-                totalTime = endTime - startTime;
-                System.out.println("Node Visited: " + visited[0]);
-                System.out.println("Path Length: " + path.size());
-                System.out.println("Time Taken: " + totalTime + " ms");
-                System.out.println();
             } else if (alg == 4) {
                 startTime = System.currentTimeMillis();
                 path = BFS.algo(beginWord, endWord, db, visited);
                 endTime = System.currentTimeMillis();
                 System.out.println("\nBFS Result:");
+            }
+
+            if (path.size() == 0) {
+                System.out.println("There is no path between those two words");
+            } else {
                 System.out.print(path.get(0));
                 for (int i = 1; i < path.size(); i++) {
                     System.out.print(" -> " + path.get(i));
@@ -134,9 +105,9 @@ public class Main {
                 System.out.println("Node Visited: " + visited[0]);
                 System.out.println("Path Length: " + path.size());
                 System.out.println("Time Taken: " + totalTime + " ms");
-                System.out.println();
             }
 
+            System.out.println();
             System.out.println("Press enter to continue");
             userAgain.nextLine();
         }
