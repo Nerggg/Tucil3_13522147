@@ -29,7 +29,7 @@ public class Main {
             System.out.println("1. Greedy Best First Search");
             System.out.println("2. A Star");
             System.out.println("3. Uniform Cost Search");
-            System.out.println("4. Breadth First Search\n");
+//            System.out.println("4. Breadth First Search\n");
             while (!flag2) {
                 System.out.println("Select your preferred algorithm (enter 5 to exit): ");
                 alg = userinput.nextInt();
@@ -79,7 +79,7 @@ public class Main {
                 startTime = System.currentTimeMillis();
                 path = AStar.algo(beginWord, endWord, db, visited);
                 endTime = System.currentTimeMillis();
-                System.out.println("\nAstar Result:");
+                System.out.println("\nAStar Result:");
             } else if (alg == 3) {
                 startTime = System.currentTimeMillis();
                 path = UCS.algo(beginWord, endWord, db, visited);
