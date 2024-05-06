@@ -1,6 +1,6 @@
 # Tugas Kecil Strategi Algoritma IF2211
 
-## Membangun Kurva Bézier dengan Algoritma Titik Tengah berbasis Divide and Conquer
+## Penyelesaian Permainan Word Ladder Menggunakan Algoritma UCS, Greedy Best First Search, dan A*
 
 ## Table of Contents
 
