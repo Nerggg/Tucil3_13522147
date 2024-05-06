@@ -30,12 +30,9 @@ public class Main {
             System.out.println("2. A Star");
             System.out.println("3. Uniform Cost Search");
             while (!flag2) {
-                System.out.println("Select your preferred algorithm (enter 5 to exit): ");
+                System.out.println("Select your preferred algorithm (enter 4 to exit): ");
                 alg = userinput.nextInt();
-                if (alg == 69) {
-                    System.out.println(
-                            "\nTABRAK-TABRAK MASUK\nRAPPER KAMPUNG TABRAK MASUK\nMESKI JAUH JARAK PANDANG\nCOBA SEDIKIT MENGAMUK\nKU CIPTAKAN LIRIK DAN BEAT\nSECEPAT KILAT TAPI TAK SEMPIT\nBERDIRI TEGAR WALAUPUN SULIT\nTRA MAMPU BERSAING SILAHKAN PAMIT\nOK GAS-OK GAS\nTAMBAH DUA TORANG GAS\n");
-                } else if (alg < 1 || alg > 4) {
+                if (alg < 1 || alg > 4) {
                     System.out.println("Incorrect input!\n");
                 } else {
                     flag2 = true;
