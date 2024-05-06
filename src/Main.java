@@ -29,21 +29,20 @@ public class Main {
             System.out.println("1. Greedy Best First Search");
             System.out.println("2. A Star");
             System.out.println("3. Uniform Cost Search");
-//            System.out.println("4. Breadth First Search\n");
             while (!flag2) {
                 System.out.println("Select your preferred algorithm (enter 5 to exit): ");
                 alg = userinput.nextInt();
                 if (alg == 69) {
                     System.out.println(
                             "\nTABRAK-TABRAK MASUK\nRAPPER KAMPUNG TABRAK MASUK\nMESKI JAUH JARAK PANDANG\nCOBA SEDIKIT MENGAMUK\nKU CIPTAKAN LIRIK DAN BEAT\nSECEPAT KILAT TAPI TAK SEMPIT\nBERDIRI TEGAR WALAUPUN SULIT\nTRA MAMPU BERSAING SILAHKAN PAMIT\nOK GAS-OK GAS\nTAMBAH DUA TORANG GAS\n");
-                } else if (alg < 1 || alg > 5) {
+                } else if (alg < 1 || alg > 4) {
                     System.out.println("Incorrect input!\n");
                 } else {
                     flag2 = true;
                 }
             }
 
-            if (alg == 5) {
+            if (alg == 4) {
                 System.out.println("Bye!");
                 begin = false;
                 flag1 = true;
@@ -85,11 +84,6 @@ public class Main {
                 path = UCS.algo(beginWord, endWord, db, visited);
                 endTime = System.currentTimeMillis();
                 System.out.println("\nUCS Result:");
-            } else if (alg == 4) {
-                startTime = System.currentTimeMillis();
-                path = BFS.algo(beginWord, endWord, db, visited);
-                endTime = System.currentTimeMillis();
-                System.out.println("\nBFS Result:");
             }
 
             if (path.size() == 0) {
