@@ -2,10 +2,10 @@ import java.util.*;
 
 class GBFS {
     static public List<String> algo(String beginWord, String endWord, Map<String, Boolean> wordList, long[] visited) {
-        Node beginNode = new Node(beginWord);
+        NodeGBFS beginNode = new NodeGBFS(beginWord);
         beginNode.path.add(beginWord);
 
-        PriorityQueue<Node> todo = new PriorityQueue<>((a, b) -> {
+        PriorityQueue<NodeGBFS> todo = new PriorityQueue<>((a, b) -> {
             int diffA = getHeuristic(a.word, endWord);
             int diffB = getHeuristic(b.word, endWord);
             return Integer.compare(diffA, diffB);
@@ -13,7 +13,7 @@ class GBFS {
         todo.add(beginNode);
 
         while (!todo.isEmpty()) {
-            Node current = todo.poll();
+            NodeGBFS current = todo.poll();
             visited[0]++;
             if (current.word.equals(endWord)) {
                 return current.path;
@@ -28,7 +28,7 @@ class GBFS {
                     if (wordList.containsKey(newWord)) {
                         List<String> tempPath = new ArrayList<>(current.path);
                         tempPath.add(newWord);
-                        Node newNode = new Node(newWord, tempPath);
+                        NodeGBFS newNode = new NodeGBFS(newWord, tempPath);
                         todo.add(newNode);
                         wordList.remove(newWord);
                     }
