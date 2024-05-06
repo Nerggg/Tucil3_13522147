@@ -10,6 +10,7 @@
 - [Structure](#structure)
 - [Dependencies](#dependencies)
 - [How to Use](#how-to-use)
+- [Attachment](#attachment)
 
 ## General Information
 
@@ -114,3 +115,7 @@ OpenJDK
     ```
     java Main
     ```
+
+## Attachment
+
+Dictionary used from https://github.com/dwyl/english-words
